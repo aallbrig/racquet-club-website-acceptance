@@ -13,12 +13,11 @@ function parse_page() {
 
     echo "Processing URL: $url"
 
-    # Avoid re-downloading and re-parsing the same page
     if [ ! -e "${TMP_DIR}/${filename}" ]; then
         wget -q -O "${TMP_DIR}/${filename}" "$url"
         echo "Downloaded: $url"
     else
-        echo "Already downloaded: $url"  # Indicates the URL was previously downloaded and is being skipped.
+        echo "Already downloaded: $url"
     fi
 
     local title=$(grep -oE '<title>[^<]*</title>' "${TMP_DIR}/${filename}" | sed -E 's/<title>([^<]*)<\/title>/\1/')
@@ -50,7 +49,6 @@ function main() {
   [[ "${BASE_URL}" != */ ]] && BASE_URL="${BASE_URL}/"
   echo "Normalized base URL: $BASE_URL"
   TMP_DIR=$(mktemp -d)
-  echo "Temporary files stored in: $TMP_DIR"
 
   parse_page "$BASE_URL" "Home Page"
 

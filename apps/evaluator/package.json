@@ -1,0 +1,16 @@
+{
+  "name": "website-evaluator",
+  "version": "0.0.1",
+  "description": "Evaluate a website to make sure it is how it is expected to be",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Allbright",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^22.12.0"
+  }
+}
